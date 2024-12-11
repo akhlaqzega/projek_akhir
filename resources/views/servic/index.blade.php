@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -29,8 +29,12 @@
                     <td>{{ $service->nama_mekanik }}</td>
                     <td>{{ $service->sparepart_pengganti }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="{{ route('service.edit', $service->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('service.destroy', $service->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -10,7 +10,7 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = [
-        'daftar_service_id', 
+        'daftar_services_id', 
         'keluhan', 
         'estimasi_servis', 
         'nama_mekanik', 
@@ -20,6 +20,6 @@ class Service extends Model
     // Relasi dengan daftar service
     public function daftarService()
     {
-        return $this->belongsTo(DaftarService::class, 'daftar_service_id');
+        return $this->belongsTo(DaftarService::class, 'daftar_services_id');
     }
 }

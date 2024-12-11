@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -16,6 +16,7 @@
                 <th>No Plat Kendaraan</th>
                 <th>Nama Pelanggan</th>
                 <th>Jumlah Bayar</th>
+                <th>Jenis Pembayaran</th>
                 <th>Tanggal Bayar</th>
                 <th>Aksi</th>
             </tr>
@@ -26,12 +27,17 @@
                     <td>{{ $pembayaran->id }}</td>
                     <td>{{ $pembayaran->daftarService->kendaraan->no_plat }}</td>
                     <td>{{ $pembayaran->daftarService->pelanggan->nama_lengkap }}</td>
-                    <td>{{ $pembayaran->jumlah_bayar }}</td>
-                    <td>{{ $pembayaran->tanggal_bayar }}</td>
+                    <td>{{ $pembayaran->jumlah_biaya }}</td>
+                    <td>{{ $pembayaran->jenis_pembayaran }}</td>
+                    <td>{{ $pembayaran->created_at->format('Y-m-d') }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                    </td>
+                        <a href="{{ route('pembayaran.edit', $pembayaran->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('pembayaran.destroy', $pembayaran->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran ini?')">Hapus</button>
+                        </form>
+                    </td
                 </tr>
             @endforeach
         </tbody>

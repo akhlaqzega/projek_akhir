@@ -8,23 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class DaftarService extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'kendaraans_id',  // Gantilah 'kendaraan_id' menjadi 'kendaraans_id'
-        'pelanggans_id',  // Gantilah 'pelanggan_id' menjadi 'pelanggans_id'
-        'keluhan',
-        'tanggal_servis',
+        'kendaraans_id',  // Kolom untuk menyimpan id kendaraan
+        'pelanggans_id',   // Kolom untuk menyimpan id pelanggan
+        'keluhan',         // Kolom untuk keluhan servis
+        'tanggal_servis',  // Kolom untuk tanggal servis
     ];
-
-    // Relasi dengan kendaraan
+    // Relasi ke kendaraan
     public function kendaraan()
     {
-        return $this->belongsTo(Kendaraan::class, 'kendaraans_id');  // Gantilah 'kendaraan_id' menjadi 'kendaraans_id'
+        return $this->belongsTo(Kendaraan::class, 'kendaraans_id');
     }
 
-    // Relasi dengan pelanggan
+    // Relasi dengan Pelanggan
     public function pelanggan()
     {
-        return $this->belongsTo(Pelanggan::class, 'pelanggans_id');  // Gantilah 'pelanggan_id' menjadi 'pelanggans_id'
+        return $this->belongsTo(Pelanggan::class, 'pelanggans_id');
     }
 }

@@ -8,40 +8,82 @@ use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
 {
+    // Menampilkan daftar kendaraan
     public function index()
     {
-        $kendaraans = Kendaraan::all();
+        $kendaraans = Kendaraan::with('pelanggan')->get();
         return view('kendaraan.index', compact('kendaraans'));
     }
 
+    // Menampilkan form tambah kendaraan
     public function create()
     {
-        $pelanggans = Pelanggan::all(); // Ambil data pelanggan
+        $pelanggans = Pelanggan::all();
         return view('kendaraan.create', compact('pelanggans'));
     }
 
+    // Menyimpan data kendaraan
     public function store(Request $request)
     {
         $request->validate([
-            'no_plat' => 'required|string',
-            'jenis_kendaraan' => 'required|string',
-            'no_stnk' => 'required|string',
-            'tahun_pembuatan' => 'required|integer',
-            'warna' => 'required|string',
-            'pelanggan_id' => 'required|exists:pelanggans,id', // Pastikan pelanggan_id ada
+            'no_plat' => 'required|string|max:255',
+            'jenis_kendaraan' => 'required|in:Matic,Manual Transimisi',
+            'no_stnk' => 'required|string|max:255',
+            'tahun_pembuatan' => 'required|integer|min:1900|max:' . date('Y'),
+            'warna' => 'required|string|max:50',
         ]);
-    
-        // Menyimpan data kendaraan
+
         Kendaraan::create([
+            'pelanggan_id' => $request->pelanggan_id,
             'no_plat' => $request->no_plat,
             'jenis_kendaraan' => $request->jenis_kendaraan,
             'no_stnk' => $request->no_stnk,
             'tahun_pembuatan' => $request->tahun_pembuatan,
             'warna' => $request->warna,
-            'pelanggan_id' => $request->pelanggan_id, // Menyertakan pelanggan_id
         ]);
-    
+
         return redirect()->route('kendaraan.index')->with('success', 'Data kendaraan berhasil ditambahkan');
     }
-    
+
+    // Menampilkan form edit kendaraan
+    public function edit($id)
+    {
+        $kendaraan = Kendaraan::findOrFail($id);
+        $pelanggans = Pelanggan::all();
+        return view('kendaraan.edit', compact('kendaraan', 'pelanggans'));
+    }
+
+    // Memperbarui data kendaraan
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'no_plat' => 'required|string|max:255',
+            'jenis_kendaraan' => 'required|in:Matic,Manual Transimisi',
+            'no_stnk' => 'required|string|max:255',
+            'tahun_pembuatan' => 'required|integer|min:1900|max:' . date('Y'),
+            'warna' => 'required|string|max:50',
+        ]);
+
+        $kendaraan = Kendaraan::findOrFail($id);
+        $kendaraan->update([
+            'pelanggan_id' => $request->pelanggan_id,
+            'no_plat' => $request->no_plat,
+            'jenis_kendaraan' => $request->jenis_kendaraan,
+            'no_stnk' => $request->no_stnk,
+            'tahun_pembuatan' => $request->tahun_pembuatan,
+            'warna' => $request->warna,
+        ]);
+
+        return redirect()->route('kendaraan.index')->with('success', 'Data kendaraan berhasil diperbarui');
+    }
+
+    // Menghapus data kendaraan
+    public function destroy($id)
+    {
+        $kendaraan = Kendaraan::findOrFail($id);
+        $kendaraan->delete();
+
+        return redirect()->route('kendaraan.index')->with('success', 'Data kendaraan berhasil dihapus');
+    }
 }
+

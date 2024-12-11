@@ -10,23 +10,11 @@ class Kendaraan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pelanggan_id', 
-        'no_plat', 
-        'jenis_kendaraan', 
-        'no_stnk', 
-        'tahun_pembuatan', 
-        'warna'
+        'pelanggan_id', 'no_plat', 'jenis_kendaraan', 'no_stnk', 'tahun_pembuatan', 'nama_pemilik', 'warna'
     ];
 
-    // Relasi dengan pelanggan
     public function pelanggan()
     {
-        return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
-    }
-
-    // Relasi dengan service
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'kendaraan_id');
+        return $this->belongsTo(Pelanggan::class); // Pastikan nama model 'Pelangan' sudah sesuai
     }
 }

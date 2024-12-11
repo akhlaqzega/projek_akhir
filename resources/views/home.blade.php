@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="text-center">Selamat Datang di Sistem Service Motor</h1>

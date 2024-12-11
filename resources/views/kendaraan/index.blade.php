@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -17,6 +17,7 @@
                 <th>Jenis Kendaraan</th>
                 <th>No STNK</th>
                 <th>Tahun Pembuatan</th>
+                <th>Nama Pemilik</th>
                 <th>Warna</th>
                 <th>Aksi</th>
             </tr>
@@ -29,10 +30,15 @@
                     <td>{{ $kendaraan->jenis_kendaraan }}</td>
                     <td>{{ $kendaraan->no_stnk }}</td>
                     <td>{{ $kendaraan->tahun_pembuatan }}</td>
+                    <td>{{ $kendaraan->pelanggan->nama_lengkap }}</td>
                     <td>{{ $kendaraan->warna }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="{{ route('kendaraan.edit', $kendaraan->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('kendaraan.destroy', $kendaraan->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -7,7 +7,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Tambahkan CSS custom untuk mempercantik */
+        /* Navbar custom */
         .navbar {
             background-color: #4CAF50;
         }
@@ -17,11 +17,34 @@
         .nav-link:hover {
             color: #FFD700 !important;
         }
+        .navbar-toggler-icon {
+            background-color: white;
+        }
         body {
             background-color: #f8f9fa;
         }
         .container {
             margin-top: 50px;
+        }
+
+        /* Styling navbar items */
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-item:last-child {
+            margin-right: 0;
+        }
+
+        /* Hover effect for nav items */
+        .nav-item:hover {
+            background-color: #3e8e41;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -34,9 +57,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('pelanggan.index') }}">Data Pelanggan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pembayaran.index') }}">Pembayaran Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('kendaraan.index') }}">Data Kendaraan</a>
@@ -44,21 +70,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('daftar-service.index') }}">Daftar Service</a>
                     </li>
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Data Service
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/service">Lihat Data service</a></li>
-                            <li><a class="dropdown-item" href="/service/create">Tambah Data service</a></li>
-                        </ul>
-                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('service.index') }}">Data Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pembayaran.index') }}">Pembayaran Service</a>
                     </li>
                 </ul>
             </div>

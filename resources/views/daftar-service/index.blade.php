@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -24,13 +24,30 @@
             @foreach ($daftarServices as $daftarService)
                 <tr>
                     <td>{{ $daftarService->id }}</td>
-                    <td>{{ $daftarService->kendaraan->no_plat }}</td>
-                    <td>{{ $daftarService->pelanggan->nama_lengkap }}</td>
+                    <!-- Periksa apakah kendaraan dan pelanggan tidak null -->
+                    <td>
+                        @if($daftarService->kendaraan)
+                            {{ $daftarService->kendaraan->no_plat }}
+                        @else
+                            No Plat Tidak Ditemukan
+                        @endif
+                    </td>
+                    <td>
+                        @if($daftarService->pelanggan)
+                            {{ $daftarService->pelanggan->nama_lengkap }}
+                        @else
+                            Nama Pelanggan Tidak Ditemukan
+                        @endif
+                    </td>
                     <td>{{ $daftarService->keluhan }}</td>
                     <td>{{ $daftarService->tanggal_servis }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="{{ route('daftar-service.edit', $daftarService->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('daftar-service.destroy', $daftarService->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

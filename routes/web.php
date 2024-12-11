@@ -16,3 +16,5 @@ Route::resource('kendaraan', KendaraanController::class);
 Route::resource('daftar-service', DaftarServiceController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('pembayaran', PembayaranController::class);
+
+Route::get('/getKeluhan/{id}', [ServiceController::class, 'getKeluhan']);

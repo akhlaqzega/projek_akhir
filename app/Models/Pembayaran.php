@@ -10,15 +10,15 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $fillable = [
-        'service_id',
+        'services_id',
         'jumlah_biaya',
         'jenis_pembayaran',
-        'keterangan'
+        'keterangan',
     ];
 
-    // Relasi dengan service
-    public function service()
+    // Relasi dengan DaftarService
+    public function daftarService()
     {
-        return $this->belongsTo(Service::class, 'service_id');
+        return $this->belongsTo(DaftarService::class, 'services_id');
     }
 }
