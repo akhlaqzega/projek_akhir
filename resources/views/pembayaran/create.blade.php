@@ -7,19 +7,20 @@
         <form action="{{ route('pembayaran.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="services_id" class="form-label">Daftar Service</label>
+                <label for="services_id" class="form-label">Id Servis Pelanggan</label>
                 <select name="services_id" id="services_id" class="form-control" required>
                     @foreach ($daftarServices as $daftarService)
+                        <!-- Mengambil ID servis pelanggan, jika ID servis ada di model terkait -->
                         <option value="{{ $daftarService->id }}">
-                            {{ $daftarService->kendaraan->no_plat }} - {{ $daftarService->pelanggan->nama_lengkap }}
+                            {{ $daftarService->id }} - {{ $daftarService->pelanggan->nama_lengkap }} - {{ $daftarService->kendaraan->no_plat }}
                         </option>
                     @endforeach
                 </select>
             </div>
 
             <div class="mb-3">
-                <label for="jumlah_bayar" class="form-label">Jumlah Bayar</label>
-                <input type="number" name="jumlah_bayar" id="jumlah_bayar" class="form-control" required>
+                <label for="jumlah_biaya" class="form-label">Jumlah Biaya</label>
+                <input type="number" name="jumlah_biaya" id="jumlah_biaya" class="form-control" required>
             </div>
 
             <div class="mb-3">

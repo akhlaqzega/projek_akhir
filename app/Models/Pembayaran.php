@@ -17,8 +17,10 @@ class Pembayaran extends Model
     ];
 
     // Relasi dengan DaftarService
-    public function daftarService()
+    public function DaftarService()
     {
         return $this->belongsTo(DaftarService::class, 'services_id');
     }
+    
+    
 }

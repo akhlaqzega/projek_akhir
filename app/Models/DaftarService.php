@@ -9,10 +9,10 @@ class DaftarService extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'kendaraans_id',  // Kolom untuk menyimpan id kendaraan
-        'pelanggans_id',   // Kolom untuk menyimpan id pelanggan
-        'keluhan',         // Kolom untuk keluhan servis
-        'tanggal_servis',  // Kolom untuk tanggal servis
+        'kendaraans_id',  
+        'pelanggans_id',   
+        'keluhan',         
+        'tanggal_servis',  
     ];
     // Relasi ke kendaraan
     public function kendaraan()
@@ -25,4 +25,8 @@ class DaftarService extends Model
     {
         return $this->belongsTo(Pelanggan::class, 'pelanggans_id');
     }
+    public function pembayaran()
+{
+    return $this->hasMany(Pembayaran::class, 'services_id');
+}
 }

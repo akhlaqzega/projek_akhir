@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Edit Pembayaran</h1>
+<div class="container">
+    <h1>Edit Pembayaran</h1>
 
         <form action="{{ route('pembayaran.update', $pembayaran->id) }}" method="POST">
             @csrf
@@ -21,8 +21,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="jumlah_bayar" class="form-label">Jumlah Bayar</label>
-                <input type="number" name="jumlah_bayar" id="jumlah_bayar" class="form-control" value="{{ $pembayaran->jumlah_biaya }}" required>
+                <label for="jumlah_biaya" class="form-label">Jumlah Bayar</label>
+                <input type="number" name="jumlah_biaya" id="jumlah_biaya" class="form-control" value="{{ $pembayaran->jumlah_biaya }}" required>
             </div>
 
             <div class="mb-3">

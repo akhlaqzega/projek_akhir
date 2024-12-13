@@ -41,7 +41,9 @@
                         <option value="{{ $pelanggan->id }}">{{ $pelanggan->nama_lengkap }}</option>
                     @endforeach
                 </select>
+
             </div>
+          
 
             <!-- Warna Kendaraan -->
             <div class="mb-3">

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Tambah Pelanggan</h1>
+<div class="container">
+    <h1>Tambah Pelanggan</h1>
 
         <form action="{{ route('pelanggan.store') }}" method="POST">
             @csrf

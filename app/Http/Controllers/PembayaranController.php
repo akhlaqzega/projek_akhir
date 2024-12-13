@@ -23,14 +23,14 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'services_id' => 'required|exists:daftar_services,id',
-            'jumlah_bayar' => 'required|numeric',
+            'jumlah_biaya' => 'required|numeric',
             'jenis_pembayaran' => 'required|in:Cash,Non Tunai',
             'keterangan' => 'nullable|string',
         ]);
 
         Pembayaran::create([
             'services_id' => $request->services_id,
-            'jumlah_biaya' => $request->jumlah_bayar,
+            'jumlah_biaya' => $request->jumlah_biaya,
             'jenis_pembayaran' => $request->jenis_pembayaran,
             'keterangan' => $request->keterangan,
         ]);
@@ -49,7 +49,7 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'services_id' => 'required|exists:daftar_services,id',
-            'jumlah_bayar' => 'required|numeric',
+            'jumlah_biaya' => 'required|numeric',
             'jenis_pembayaran' => 'required|in:Cash,Non Tunai',
             'keterangan' => 'nullable|string',
         ]);
@@ -57,7 +57,7 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::findOrFail($id);
         $pembayaran->update([
             'services_id' => $request->services_id,
-            'jumlah_biaya' => $request->jumlah_bayar,
+            'jumlah_biaya' => $request->jumlah_biaya,
             'jenis_pembayaran' => $request->jenis_pembayaran,
             'keterangan' => $request->keterangan,
         ]);

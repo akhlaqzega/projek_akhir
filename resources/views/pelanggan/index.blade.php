@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <h1>Data Pelanggan</h1>
-        
+<div class="container">
+    
+    <h1>Data Pelanggan</h1>
+
         <a href="{{ route('pelanggan.create') }}" class="btn btn-primary mb-3">Tambah Pelanggan</a>
 
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
@@ -35,10 +36,12 @@
                             <a href="{{ route('pelanggan.edit', $pelanggan->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
                             <!-- Delete Button -->
-                            <form action="{{ route('pelanggan.destroy', $pelanggan->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('pelanggan.destroy', $pelanggan->id) }}" method="POST"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                                <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
                             </form>
                         </td>
                     </tr>

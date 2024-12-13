@@ -31,6 +31,7 @@
                     <td>{{ $kendaraan->no_stnk }}</td>
                     <td>{{ $kendaraan->tahun_pembuatan }}</td>
                     <td>{{ $kendaraan->pelanggan->nama_lengkap }}</td>
+                    <td>{{ $kendaraan->nama_pemilik }}</td>
                     <td>{{ $kendaraan->warna }}</td>
                     <td>
                         <a href="{{ route('kendaraan.edit', $kendaraan->id) }}" class="btn btn-sm btn-warning">Edit</a>

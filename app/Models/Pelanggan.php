@@ -25,7 +25,7 @@ class Pelanggan extends Model
     public function services()
     {
         return $this->hasMany(Service::class, 'pelanggan_id');
-    }
+    } 
 }
 
 

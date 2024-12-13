@@ -22,4 +22,9 @@ class Service extends Model
     {
         return $this->belongsTo(DaftarService::class, 'daftar_services_id');
     }
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class, 'services_id');
+    }
+
 }

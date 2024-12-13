@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        
         // User::factory(10)->create();
 
         // User::factory()->create([
@@ -21,10 +22,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             PelangganSeeder::class,
-            KendaraanSeeder::class,
-            DaftarServiceSeeder::class,
-            ServiceSeeder::class,
-            PembayaranSeeder::class,
+            // KendaraanSeeder::class,
+            // DaftarServiceSeeder::class,
+            // ServiceSeeder::class,
+            // PembayaranSeeder::class,
         ]);
     }
 }

@@ -11,10 +11,10 @@ class Kendaraan extends Model
 
     protected $fillable = [
         'pelanggan_id', 'no_plat', 'jenis_kendaraan', 'no_stnk', 'tahun_pembuatan', 'nama_pemilik', 'warna'
-    ];
+    ]; 
 
     public function pelanggan()
     {
-        return $this->belongsTo(Pelanggan::class); // Pastikan nama model 'Pelangan' sudah sesuai
+        return $this->belongsTo(Pelanggan::class); 
     }
 }

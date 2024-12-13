@@ -7,10 +7,12 @@
     <title>Service Motor</title>
     <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 
 <body>
     <!-- Body Wrapper -->
+  
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
@@ -18,9 +20,9 @@
         <aside class="left-sidebar">
             <!-- Sidebar scroll-->
             <div>
-                <div class="brand-logo d-flex align-items-center justify-content-center">
-                    <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="/modern/src/assets/images/logos/yah.jpeg" width="130" alt="" />
+                <div class="brand-logo d-flex align-items-center justify-content-center mt-3">
+                    <a href="/home" class="text-nowrap logo-img">
+                        <img src="/modern/src/assets/images/logos/p.jpeg" width="160" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -29,9 +31,13 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Home</span>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/home" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-home"></i>
+                                </span>
+                                <span class="hide-menu">Home</span>
+                            </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('pelanggan.index') }}" aria-expanded="false">
@@ -49,8 +55,6 @@
                                 <span class="hide-menu">Data Kendaraan</span>
                             </a>
                         </li>
-
-
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('daftar-service.index') }}" aria-expanded="false">
                                 <span>
@@ -81,6 +85,7 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        
         <!-- Sidebar End -->
 
         <!-- Main wrapper -->
@@ -99,6 +104,14 @@
     <script src="modern/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="modern/src/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="modern/src/assets/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 500, // Durasi animasi dalam milidetik
+            once: true      // Animasi hanya diputar sekali (true) atau berulang (false)
+        });
+    </script>
+    
 </body>
 
 </html>
