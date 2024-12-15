@@ -21,6 +21,9 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(DaftarService::class, 'services_id');
     }
-    
+    public function service()
+{
+    return $this->belongsTo(Service::class, 'services_id');
+}
     
 }

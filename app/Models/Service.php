@@ -26,5 +26,13 @@ class Service extends Model
     {
         return $this->hasOne(Pembayaran::class, 'services_id');
     }
+    public function kendaraan()
+    {
+        return $this->belongsTo(Kendaraan::class, 'kendaraan_id');
+    }
+    public function pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
+    }
 
 }

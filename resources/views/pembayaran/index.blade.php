@@ -16,7 +16,7 @@
                 <th>No Plat Kendaraan</th>
                 <th>Nama Pelanggan</th>
                 <th>Jumlah Biaya</th>
-                <th>Jenis Pembayaran</th>
+                <th>Jenis Pembayaran</th>4
                 <th>Keterangan</th>
                 <th>Tanggal Bayar</th>
                 <th>Aksi</th>
@@ -46,3 +46,4 @@
     </table>
 </div>
 @endsection
+ 

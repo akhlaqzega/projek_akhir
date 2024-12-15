@@ -9,12 +9,11 @@
             <div class="mb-3">
                 <label for="services_id" class="form-label">Id Servis Pelanggan</label>
                 <select name="services_id" id="services_id" class="form-control" required>
-                    @foreach ($daftarServices as $daftarService)
-                        <!-- Mengambil ID servis pelanggan, jika ID servis ada di model terkait -->
-                        <option value="{{ $daftarService->id }}">
-                            {{ $daftarService->id }} - {{ $daftarService->pelanggan->nama_lengkap }} - {{ $daftarService->kendaraan->no_plat }}
-                        </option>
-                    @endforeach
+                    @foreach ($daftarServices as $service)
+                    <option value="{{ $service->id }}">
+                        {{ $service->id }} 
+                    </option>
+                @endforeach
                 </select>
             </div>
 

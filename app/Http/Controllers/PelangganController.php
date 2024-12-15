@@ -28,7 +28,7 @@ class PelangganController extends Controller
         ]);
 
         Pelanggan::create($request->all());
-
+ 
         return redirect()->route('pelanggan.index')->with('success', 'Data pelanggan berhasil ditambahkan!');
     }
 

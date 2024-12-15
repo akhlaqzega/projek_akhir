@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
 use App\Models\DaftarService;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -15,7 +16,7 @@ class PembayaranController extends Controller
 
     public function create()
     {
-        $daftarServices = DaftarService::with('kendaraan', 'pelanggan')->get();
+        $daftarServices = Service::with('kendaraan', 'pelanggan')->get();
         return view('pembayaran.create', compact('daftarServices'));
     }
 
